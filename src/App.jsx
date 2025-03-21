@@ -22,9 +22,6 @@ function App() {
               <a href="#judges" className="hover:text-neonPink transition">Judges</a>
               <a href="#sponsors" className="hover:text-neonPink transition">Sponsors</a>
               <a href="#timeline" className="hover:text-neonPink transition">Timeline</a>
-              <button className="bg-neonPink text-darkBg px-4 py-2 rounded-full hover:bg-neonBlue transition">
-                Contact Us
-              </button>
             </div>
           </nav>
 

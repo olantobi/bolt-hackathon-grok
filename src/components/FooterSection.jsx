@@ -6,9 +6,9 @@ const FooterSection = () => {
         Register Now
       </button>
       <div className="mt-4 space-x-4">
-        <a href="#" className="text-neonBlue hover:text-neonPink">Twitter</a>
-        <a href="#" className="text-neonBlue hover:text-neonPink">LinkedIn</a>
-        <a href="#" className="text-neonBlue hover:text-neonPink">Discord</a>
+        <a href="https://x.com/boltdotnew" className="text-neonBlue hover:text-neonPink">X</a>
+        <a href="https://www.linkedin.com/company/stackblitz" className="text-neonBlue hover:text-neonPink">LinkedIn</a>
+        <a href="https://discord.com/invite/stackblitz" className="text-neonBlue hover:text-neonPink">Discord</a>
       </div>
     </footer>
   );
