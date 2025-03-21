@@ -1,7 +1,8 @@
-import { motion } from 'framer-motion';
-import { FaTwitter, FaLinkedin, FaDiscord } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaTwitter, FaLinkedin, FaDiscord, FaTimes } from 'react-icons/fa';
+import { useState } from 'react';
 
-// Social share icons with actual icons and links
+// Social share icons
 const socialIcons = [
   { name: 'X', link: 'https://x.com/boltdotnew', icon: <FaTwitter /> },
   { name: 'LinkedIn', link: 'https://www.linkedin.com/company/stackblitz', icon: <FaLinkedin /> },
@@ -47,13 +48,62 @@ const socialIconVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 1 + i * 0.2, // Staggered delay for each icon
+      delay: 1 + i * 0.2,
       duration: 0.5,
     },
   }),
 };
 
+// Variants for the modal animation
+const modalVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+  exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
+};
+
 const HeroSection = () => {
+  // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // State for form data
+  const [formData, setFormData] = useState({ name: '', email: '' });
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+
+  // Handle form submission
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        console.log('Registration successful:', formData);
+
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({ name: '', email: '' });
+          setIsModalOpen(false);
+        }, 2000); // Close after 2 seconds
+      } else {
+        console.error('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <section className="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden">
       {/* Particle Background */}
@@ -78,7 +128,7 @@ const HeroSection = () => {
         transition={{ duration: 1.5 }}
         className="relative z-10"
       >
-        {/* Gradient Background - Lower z-index to ensure it's behind the content */}
+        {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-neonBlue to-neonPink opacity-50 blur-3xl rounded-full w-[600px] h-[600px] mx-auto z-0" />
 
         {/* Headline with Glow Effect */}
@@ -109,7 +159,7 @@ const HeroSection = () => {
           className="relative z-10"
         >
           <motion.button
-            onClick={() => alert('Registration form coming soon!')}
+            onClick={() => setIsModalOpen(true)}
             whileHover={{
               scale: 1.1,
               boxShadow: '0 0 15px rgba(0, 255, 255, 0.8)',
@@ -145,6 +195,83 @@ const HeroSection = () => {
           ))}
         </motion.div>
       </motion.div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center bg-black/80 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="bg-darkBg p-8 rounded-lg border-2 border-neonBlue max-w-md w-full relative"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="absolute top-4 right-4 text-neonPink hover:text-neonBlue"
+              >
+                ✕
+              </button>
+
+              {/* Modal Content */}
+              {isSubmitted ?  (
+                <p className="text-neonBlue text-lg">Registration successful! See you at the hackathon! 🎉 </p>
+              ) : (
+                <>
+                <h2 className="text-3xl font-bold text-neonPink mb-4">
+                  Register for the Hackathon
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-neonBlue mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-neonBlue mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-neonPink text-darkBg py-2 rounded-full font-semibold hover:bg-neonBlue transition"
+                  >
+                    Submit
+                  </button>
+                </form>
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
