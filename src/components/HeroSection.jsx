@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Parallax } from 'react-scroll-parallax';
 
 const HeroSection = () => {
   return (
@@ -9,7 +10,9 @@ const HeroSection = () => {
         transition={{ duration: 1.5 }}
         className="relative"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-neonBlue to-neonPink opacity-50 blur-3xl rounded-full w-[600px] h-[600px] mx-auto" />
+        <Parallax speed={-20}>
+          <div className="absolute inset-0 bg-gradient-to-r from-neonBlue to-neonPink opacity-50 blur-3xl rounded-full w-[600px] h-[600px] mx-auto" />
+        </Parallax>
         <motion.h1
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
