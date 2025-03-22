@@ -41,3 +41,11 @@ body {
   }
 }
 
+.overflow-x-auto {
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.flex-shrink-0 {
+  scroll-snap-align: center;
+}
+

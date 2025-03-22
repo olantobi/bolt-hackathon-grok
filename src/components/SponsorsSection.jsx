@@ -2,22 +2,21 @@ import { motion } from 'framer-motion';
 
 // Array of sponsor logos (placeholders for actual images)
 const sponsors = [
-  { name: 'Apple', logo: '[Apple Logo]' },
-  { name: 'Microsoft', logo: '[Microsoft Logo]' },
-  { name: 'Google', logo: '[Google Logo]' },
-  { name: 'Amazon', logo: '[Amazon Logo]' },
-  { name: 'Intel', logo: '[Intel Logo]' },
-  { name: 'IBM', logo: '[IBM Logo]' },
-  { name: 'Dell', logo: '[Dell Logo]' },
-  { name: 'PlayStation', logo: '[PlayStation Logo]' },
-  { name: 'Firefox', logo: '[Firefox Logo]' },
-  { name: 'Evernote', logo: '[Evernote Logo]' },
-  { name: 'Slack', logo: '[Slack Logo]' },
-  { name: 'Dropbox', logo: '[Dropbox Logo]' },
-  { name: 'GitLab', logo: '[GitLab Logo]' },
-  { name: 'Twitch', logo: '[Twitch Logo]' },
-  { name: 'OpenSea', logo: '[OpenSea Logo]' },
-  { name: 'Rippling', logo: '[Rippling Logo]' },
+  { name: 'Google', logo: <img src="https://static.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google Logo" className="h-12" /> },  
+  { name: 'Nvidia', logo: <img src="https://static.cdnlogo.com/logos/n/48/nvidia-image.svg" alt="Nvidia Logo" className="h-12" /> },  
+  { name: 'TikTok', logo: <img src="https://static.cdnlogo.com/logos/t/60/tiktok.svg" alt="TikTok Logo" className="h-12" /> },
+  { name: 'Oracle', logo: <img src="https://static.cdnlogo.com/logos/o/94/oracle.svg" alt="Oracle Logo" className="h-12" /> },
+  { name: 'DeepSeek', logo: <img src="https://static.cdnlogo.com/logos/d/9/deepseek.svg" alt="DeepSeek Logo" className="h-12" /> },
+  { name: 'Cisco', logo: <img src="https://static.cdnlogo.com/logos/c/56/cisco.svg" alt="Cisco Logo" className="h-12" /> },
+  { name: 'Tesla', logo: <img src="https://static.cdnlogo.com/logos/t/34/tesla.svg" alt="Tesla Logo" className="h-12" /> },
+  { name: 'Bluesky', logo: <img src="https://static.cdnlogo.com/logos/b/12/bluesky.svg" alt="Bluesky Logo" className="h-12" /> },
+  { name: 'Salesforce', logo: <img src="https://static.cdnlogo.com/logos/s/3/salesforce.svg" alt="Salesforce Logo" className="h-12" /> },
+  { name: 'Sony', logo: <img src="https://static.cdnlogo.com/logos/s/93/sony.svg" alt="Sony Logo" className="h-12" /> },
+  { name: 'Anthropic', logo: <img src="https://static.cdnlogo.com/logos/a/68/anthropic.svg" alt="Anthropic Logo" className="h-12" /> },
+  { name: 'Shopify', logo: <img src="https://static.cdnlogo.com/logos/s/88/shopify.svg" alt="Shopify Logo" className="h-12" /> },
+  { name: 'LinkedIn', logo: <img src="https://static.cdnlogo.com/logos/l/74/linkedin.svg" alt="Linkedin Logo" className="h-12" /> },
+  { name: 'Paypal', logo: <img src="https://static.cdnlogo.com/logos/p/41/paypal.svg" alt="Paypal Logo" className="h-12" /> },
+  { name: 'AirBnb', logo: <img src="https://static.cdnlogo.com/logos/a/94/airbnb.svg" alt="AirBnb Logo" className="h-12" /> },
 ];
 
 // Duplicate the sponsors array to create a seamless loop
