@@ -80,8 +80,8 @@ const bioOverlayVariants = {
 const JudgesSection = () => {
   return (
     <section className="py-16 text-center">
-      <h2 className="text-4xl font-bold mb-8">Meet the Judges</h2>
-      <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8">Meet the Judges</h2>
+      <div className="flex flex-col md:flex-row justify-center space-y-8 md:space-y-0 md:space-x-8 px-4">
         {judges.map((judge, index) => (
           <motion.div
             key={judge.id}
@@ -90,10 +90,10 @@ const JudgesSection = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={cardVariants}
-            className="relative w-80 bg-darkBg/50 border border-neonBlue rounded-lg overflow-hidden"
+            className="relative w-full md:w-80 bg-darkBg/50 border border-neonBlue rounded-lg overflow-hidden"
           >
             {/* Judge Image */}
-            <div className="h-96">
+            <div className="h-80 md:h-96">
               <img
                 src={judge.image}
                 alt={judge.name}
@@ -101,44 +101,38 @@ const JudgesSection = () => {
               />
             </div>
 
-            {/* Judge Name and Title (Always Visible) */}
+            {/* Judge Name and Title */}
             <div className="p-4">
-              <h3 className="text-xl font-semibold text-neonPink">{judge.name}</h3>
-              <p className="text-neonBlue">{judge.title}</p>
+              <h3 className="text-lg md:text-xl font-semibold text-neonPink">{judge.name}</h3>
+              <p className="text-neonBlue text-sm md:text-base">{judge.title}</p>
             </div>
 
-            {/* Bio Overlay (Visible on Hover) */}
+            {/* Bio Overlay */}
             <motion.div
               className="absolute inset-0 bg-darkBg/90 p-4 overflow-y-auto"
               initial="hidden"
               whileHover="visible"
               variants={bioOverlayVariants}
             >
-              <h3 className="text-xl font-semibold text-neonPink">{judge.name}</h3>
-              <p className="text-neonBlue">{judge.title}</p>
-              <p className="text-white text-sm mt-2">{judge.bio}</p>
-
-              {/* Expertise */}
+              <h3 className="text-lg md:text-xl font-semibold text-neonPink">{judge.name}</h3>
+              <p className="text-neonBlue text-sm md:text-base">{judge.title}</p>
+              <p className="text-white text-xs md:text-sm mt-2">{judge.bio}</p>
               <div className="mt-2">
                 <h4 className="text-neonBlue font-semibold">Expertise</h4>
-                <ul className="text-white text-sm list-disc list-inside">
+                <ul className="text-white text-xs md:text-sm list-disc list-inside">
                   {judge.expertise.map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
               </div>
-
-              {/* Achievements */}
               <div className="mt-2">
                 <h4 className="text-neonBlue font-semibold">Achievements</h4>
-                <ul className="text-white text-sm list-disc list-inside">
+                <ul className="text-white text-xs md:text-sm list-disc list-inside">
                   {judge.achievements.map((item, i) => (
                     <li key={i}>{item}</li>
                   ))}
                 </ul>
               </div>
-
-              {/* Social Links */}
               <div className="mt-4 flex justify-center space-x-4">
                 {judge.social.twitter && (
                   <a

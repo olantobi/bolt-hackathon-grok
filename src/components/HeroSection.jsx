@@ -105,7 +105,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden">
+    <section className="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden px-4">
       {/* Particle Background */}
       <div className="absolute inset-0 particles">
         {[...Array(20)].map((_, i) => (
@@ -129,14 +129,14 @@ const HeroSection = () => {
         className="relative z-10"
       >
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-neonBlue to-neonPink opacity-50 blur-3xl rounded-full w-[600px] h-[600px] mx-auto z-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-neonBlue to-neonPink opacity-50 blur-3xl rounded-full w-[300px] h-[300px] md:w-[600px] md:h-[600px] mx-auto z-0" />
 
         {/* Headline with Glow Effect */}
         <motion.h1
           variants={glowVariants}
           initial="initial"
           animate="animate"
-          className="text-6xl md:text-8xl font-bold text-white mb-4 relative z-10"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-white mb-4 relative z-10"
         >
           The World’s Largest Hackathon
         </motion.h1>
@@ -146,7 +146,7 @@ const HeroSection = () => {
           variants={subheadlineVariants}
           initial="initial"
           animate="animate"
-          className="text-xl md:text-2xl text-neonBlue mb-8 relative z-10"
+          className="text-lg sm:text-xl md:text-2xl text-neonBlue mb-8 relative z-10"
         >
           Compete. Innovate. Win your share of $1M+ in prizes.
         </motion.p>
@@ -166,7 +166,7 @@ const HeroSection = () => {
               transition: { duration: 0.3 },
             }}
             whileTap={{ scale: 0.95 }}
-            className="bg-neonPink text-darkBg px-6 py-3 rounded-full text-lg font-semibold border-2 border-neonBlue cursor-pointer"
+            className="bg-neonPink text-darkBg px-6 py-3 rounded-full text-base md:text-lg font-semibold border-2 border-neonBlue cursor-pointer"
           >
             Register Now
           </motion.button>
@@ -188,7 +188,7 @@ const HeroSection = () => {
               variants={socialIconVariants}
               initial="initial"
               animate="animate"
-              className="text-neonBlue hover:text-neonPink transition text-2xl"
+              className="text-neonBlue hover:text-neonPink transition text-xl md:text-2xl"
             >
               {icon.icon}
             </motion.a>
@@ -200,7 +200,7 @@ const HeroSection = () => {
       <AnimatePresence>
         {isModalOpen && (
           <motion.div
-            className="fixed inset-0 flex items-center justify-center bg-black/80 z-50"
+            className="fixed inset-0 flex items-center justify-center bg-black/80 z-50 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -210,64 +210,55 @@ const HeroSection = () => {
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="bg-darkBg p-8 rounded-lg border-2 border-neonBlue max-w-md w-full relative"
+              className="bg-darkBg p-6 rounded-lg border-2 border-neonBlue w-full max-w-md relative"
             >
-              {/* Close Button */}
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-4 right-4 text-neonPink hover:text-neonBlue"
               >
                 ✕
               </button>
-
-              {/* Modal Content */}
-              {isSubmitted ?  (
-                <p className="text-neonBlue text-lg">Registration successful! See you at the hackathon! 🎉 </p>
-              ) : (
-                <>
-                <h2 className="text-3xl font-bold text-neonPink mb-4">
-                  Register for the Hackathon
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <label htmlFor="name" className="block text-neonBlue mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
-                      placeholder="Enter your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-neonBlue mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
-                      placeholder="Enter your email"
-                      required
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full bg-neonPink text-darkBg py-2 rounded-full font-semibold hover:bg-neonBlue transition"
-                  >
-                    Submit
-                  </button>
-                </form>
-                </>
-              )}
+              <h2 className="text-2xl md:text-3xl font-bold text-neonPink mb-4">
+                Register for the Hackathon
+              </h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-neonBlue mb-2">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
+                    placeholder="Enter your name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-neonBlue mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
+                    placeholder="Enter your email"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-neonPink text-darkBg py-2 rounded-full font-semibold hover:bg-neonBlue transition"
+                >
+                  Submit
+                </button>
+              </form>
             </motion.div>
           </motion.div>
         )}

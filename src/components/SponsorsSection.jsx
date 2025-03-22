@@ -11,7 +11,7 @@ const sponsors = [
   { name: 'Tesla', logo: <img src="https://static.cdnlogo.com/logos/t/34/tesla.svg" alt="Tesla Logo" className="h-12" /> },
   { name: 'Bluesky', logo: <img src="https://static.cdnlogo.com/logos/b/12/bluesky.svg" alt="Bluesky Logo" className="h-12" /> },
   { name: 'Salesforce', logo: <img src="https://static.cdnlogo.com/logos/s/3/salesforce.svg" alt="Salesforce Logo" className="h-12" /> },
-  { name: 'Sony', logo: <img src="https://static.cdnlogo.com/logos/s/93/sony.svg" alt="Sony Logo" className="h-12" /> },
+  { name: 'Sony', logo: <img src="https://static.cdnlogo.com/logos/s/44/sony.svg" alt="Sony Logo" className="h-12" /> },
   { name: 'Anthropic', logo: <img src="https://static.cdnlogo.com/logos/a/68/anthropic.svg" alt="Anthropic Logo" className="h-12" /> },
   { name: 'Shopify', logo: <img src="https://static.cdnlogo.com/logos/s/88/shopify.svg" alt="Shopify Logo" className="h-12" /> },
   { name: 'LinkedIn', logo: <img src="https://static.cdnlogo.com/logos/l/74/linkedin.svg" alt="Linkedin Logo" className="h-12" /> },
