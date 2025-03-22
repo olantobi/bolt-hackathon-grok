@@ -73,7 +73,6 @@ const HeroSection = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-
   // Handle form submission
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -212,53 +211,62 @@ const HeroSection = () => {
               exit="exit"
               className="bg-darkBg p-6 rounded-lg border-2 border-neonBlue w-full max-w-md relative"
             >
+              {/* Close Button */}
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="absolute top-4 right-4 text-neonPink hover:text-neonBlue"
               >
                 ✕
               </button>
-              <h2 className="text-2xl md:text-3xl font-bold text-neonPink mb-4">
-                Register for the Hackathon
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-neonBlue mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
-                    placeholder="Enter your name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-neonBlue mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
-                    placeholder="Enter your email"
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-neonPink text-darkBg py-2 rounded-full font-semibold hover:bg-neonBlue transition"
-                >
-                  Submit
-                </button>
-              </form>
+
+              {/* Modal Content */}
+              {isSubmitted ?  (
+                <p className="text-neonBlue text-lg">Registration successful! See you at the hackathon! 🎉 </p>
+              ) : (
+                <>
+                <h2 className="text-2xl md:text-3xl font-bold text-neonPink mb-4">
+                  Register for the Hackathon
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-neonBlue mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-neonBlue mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full p-2 rounded bg-darkBg/50 border border-neonBlue text-white focus:outline-none focus:ring-2 focus:ring-neonPink"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-neonPink text-darkBg py-2 rounded-full font-semibold hover:bg-neonBlue transition"
+                  >
+                    Submit
+                  </button>
+                </form>
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}
