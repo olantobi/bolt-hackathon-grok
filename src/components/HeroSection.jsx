@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTwitter, FaLinkedin, FaDiscord, FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
+import Globe from './Globe';
 
 // Social share icons
 const socialIcons = [
@@ -104,7 +105,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="h-screen flex flex-col items-center justify-center text-center relative overflow-hidden px-4">
+    <section className="relative h-screen flex items-center justify-center text-center px-4">
       {/* Particle Background */}
       <div className="absolute inset-0 particles">
         {[...Array(20)].map((_, i) => (
@@ -120,6 +121,12 @@ const HeroSection = () => {
         ))}
       </div>
 
+      {/* Globe Background */}
+      <Globe />
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-darkBg/70 z-10"></div>
+      
       {/* Main Content */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
